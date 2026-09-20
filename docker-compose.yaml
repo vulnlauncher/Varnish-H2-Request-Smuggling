@@ -6,7 +6,7 @@ services:
       - workdir:/var/lib/varnish
       - ${VARNISH_VCL}:/etc/varnish/default.vcl
     ports:
-      - "${HTTP_PORT}:80"
+      - "${HTTP_PORT:-8080}:80"
     depends_on:
       - origin
   hitch:
@@ -15,7 +15,7 @@ services:
       - ${HITCH_CONF}:/etc/hitch/hitch.conf
       - ${CERT_DIR}:/etc/hitch/certs/
     ports:
-      - "${HTTPS_PORT}:443"
+      - "${HTTPS_PORT:-8443}:443"
   varnishncsa:
     image: varnish:6.6.0
     volumes:
