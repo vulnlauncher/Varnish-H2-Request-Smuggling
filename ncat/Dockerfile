@@ -1,4 +1,4 @@
-FROM debian:stretch
-RUN apt -y update && apt -y install nmap
+FROM alpine:latest
+RUN apk add --no-cache nmap-ncat
 ENTRYPOINT ["ncat"]
 CMD ["-kl", "80"]
